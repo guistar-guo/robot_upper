@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find lslidar_driver)/launch/lslidar_serial.launch"/>
+
+    <node pkg="robot_upper" type="robot_upper_node" name="robot_upper_node"/>
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>
+    <node pkg="tf" type="static_transform_publisher" name="robot_state_publisher" args="1 0 0 0 0 0 1 base_link laser 100"/>
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_upper)/rviz/gmapping.rviz"/>
+</launch>

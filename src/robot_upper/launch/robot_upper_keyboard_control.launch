@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="robot_upper" type="robot_upper_node" name="robot_upper_node"/>
+	<node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>
+
+</launch>

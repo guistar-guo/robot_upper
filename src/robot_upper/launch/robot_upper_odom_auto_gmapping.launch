@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find lslidar_driver)/launch/lslidar_serial.launch"/>
+
+    <include file="$(find laser_scan_matcher)/demo/demo_gmapping.launch"/>
+
+
+</launch>
