@@ -1,0 +1,10 @@
+local_costmap:
+  global_frame: map
+  robot_base_frame: base_footprint
+  static_map: true
+  rolling_window: true
+  width: 3.0
+  height: 3.0
+  update_frequency: 30.0
+  publish_frequency: 30.0
+  transform_tolerance: 3.0

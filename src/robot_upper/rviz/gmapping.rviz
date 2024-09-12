@@ -3,7 +3,9 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 781
   - Class: rviz/Selection
@@ -87,6 +89,34 @@ Visualization Manager:
       Topic: /map
       Unreliable: false
       Use Timestamp: false
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_link:
+          Value: true
+        laser:
+          Value: false
+        map:
+          Value: false
+        odom:
+          Value: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          odom:
+            base_link:
+              laser:
+                {}
+      Update Interval: 0
       Value: true
   Enabled: true
   Global Options:

@@ -16,8 +16,8 @@
   </node>
 
       <!-- 镭神雷达参数 -->
-    <!-- <param name="lslidar_driver_node/truncated_mode" value="0"/> -->    <!--0:不屏蔽角度 1:屏蔽角度-->
-    <!-- <rosparam param="lslidar_driver_node/disable_min">[120]</rosparam> --> <!--角度左值-->
-    <!-- <rosparam param="lslidar_driver_node/disable_max">[240]</rosparam>  --><!--角度右值-->
+    <param name="lslidar_driver_node/truncated_mode" value="0"/>    <!--0:不屏蔽角度 1:屏蔽角度-->
+    <rosparam param="lslidar_driver_node/disable_min">[0,300]</rosparam> <!--角度左值-->
+    <rosparam param="lslidar_driver_node/disable_max">[60,360]</rosparam> <!--角度右值-->
     <!-- 镭神雷达参数 -->
 </launch>

@@ -1,0 +1,28 @@
+<launch>
+    <include file="$(find lslidar_driver)/launch/lslidar_serial.launch"/>
+    <node pkg="robot_upper" type="robot_upper_node" name="robot_upper_node"/>
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>
+    <node pkg="tf" type="static_transform_publisher" name="robot_state_publisher" args="0.0 0.0 0.0 0.0 0.0 0.0 0.1 base_footprint base_link 10"/>
+    <node pkg="tf" type="static_transform_publisher" name="laser_frame_to_base_footprint" args="0.15 0.0 0.08 0.0 0.0 0.0 /base_footprint /laser 20" />
+    <!--- Run move_base -->
+    <node pkg="move_base" type="move_base" name="move_base">
+        <rosparam file="$(find robot_upper)/nav_lidar/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find robot_upper)/nav_lidar/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find robot_upper)/nav_lidar/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find robot_upper)/nav_lidar/local_costmap_params.yaml" command="load" />
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+        <rosparam file="$(find robot_upper)/nav_lidar/dwa_local_planner_params.yaml" />
+
+        
+    </node>
+
+    <!-- Run map server -->
+    <node pkg="map_server" type="map_server" name="map_server" args="$(find robot_upper)/map/map.yaml"/>
+
+    <!--- Run AMCL -->
+    <node pkg="amcl" type="amcl" name="amcl"/>
+
+    <!--- Run rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_upper)/rviz/nav.rviz"/>
+</launch>
